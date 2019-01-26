@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Teste Leme 2019</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}" />
+    <script type="text/javascript"></script>
+</head>
+<body>
+    <div class='container'>
+        <header>
+                <div class="jumbotron">
+                    <h1 class="display-4">{{ titulo }}</h1>
+                </div>
+            
+            {% if alerta %} <h2>{{ alerta }}</h2> {% endif %}
+        </header>
+    </div>
+
+    <div class='container'>
+        <form action="{% url 'enquete:index' %}" method='post'>
+        {% for question in pergunta %}
+        <fieldset>
+            <div class='bloco1'>
+                <img style="width: 150px; height: 150px;"
+                src="{{ question.imagens.url }}" alt="My image">
+            </div> 
+            <div class='super'>
+                <h3>{{ question }}</h3>
+                <p></p>
+                {% for alternativa in question.opcoes_set.all %}
+                    {% if alternativa.id in incompleto %}
+                        <div class='radio'>
+                            <input type="radio" name="{{ question }}" id="alternativa{{ forloop.counter }} " value="{{ alternativa.id }}" checked>
+                            <label for="alternativa{{ forloop.counter }}"> {{ alternativa }} </label><br>
+                        </div>
+                    {% else %}
+                        <div class='radio'>
+                            <input type="radio" name="{{ question }}" id="alternativa{{ forloop.counter }} " value="{{ alternativa.id }}">
+                            <label for="alternativa{{ forloop.counter }}"> {{ alternativa }} </label><br>
+                        </div>
+                    {% endif %} 
+                {% endfor %}
+            </div>
+        </fieldset>
+        {% endfor %}
+        <input type="submit" class="btn btn-primary btn-lg" value="Enviar">
+        </form>
+    </div>
+</body>
+</html>

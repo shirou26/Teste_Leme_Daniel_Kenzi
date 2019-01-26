@@ -1,0 +1,57 @@
+body {
+    align-items: center;
+}
+
+h1 {
+    margin: 1% 0 0 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+h2 {
+    text-align: center;
+    color: red;
+}
+
+form {
+    align-items: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 7% 0 5% 0;
+    flex-wrap: wrap;
+}
+
+fieldset{
+    background-color: #f5f5f0;
+    overflow: hidden;
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1% 1% 1% 1%;
+    margin: 0 0 5% 0;
+    flex-wrap: wrap;
+}
+
+
+.radio {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.super {
+    width: 60%;
+    margin: 0 0 0 30px;
+}
+
+label {
+    margin: 0 0 0  4%;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
